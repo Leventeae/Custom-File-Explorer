@@ -168,6 +168,10 @@ namespace FileExplorer
                     // Handle opening text files
                     OpenTextFile(fullPath);
                 }
+                else if (extension.ToLower() == ".exe")
+                {
+                    Process.Start(fullPath);
+                }
                 // Add more conditions for other file types (e.g., .exe)
             }
         }
