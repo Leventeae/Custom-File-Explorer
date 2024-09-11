@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Diagnostics;
 
 namespace FileExplorer
 {
@@ -167,6 +168,10 @@ namespace FileExplorer
                 {
                     // Handle opening text files
                     OpenTextFile(fullPath);
+                }
+                else if (extension.ToLower() == ".exe")
+                {
+                    Process.Start(fullPath);
                 }
                 // Add more conditions for other file types (e.g., .exe)
             }
