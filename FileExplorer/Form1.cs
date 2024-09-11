@@ -170,7 +170,7 @@ namespace FileExplorer
                 }
                 else if (extension.ToLower() == ".exe")
                 {
-                    Process.Start(fullPath);
+                    Process.Start(fullPath); //cigo
                 }
                 // Add more conditions for other file types (e.g., .exe)
             }
