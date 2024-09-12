@@ -21,9 +21,38 @@ namespace FileExplorer
 
         private List<string> protectedFiles = new List<string>
         {
+            // Some hard coded protection :)
             @"C:\Windows",
             @"C:\test\important.txt",
             @"C:\System32",
+            @"C:\Windows\system32",
+            @"C:\Windows\SysWOW64",
+            @"C:\Windows\WINSxS",
+            @"C:\Windows\Fonts",
+            @"C:\bootmgr",
+            @"C:\Boot\BCD",
+            @"C:\boot\bcd.log",
+            @"C:\Windows\Boot\EFI",
+            @"C:\Boot\BCD",
+            @"C:\Windows\System32\config\SYSTEM",
+            @"C:\Windows\System32\config\SOFTWARE",
+            @"C:\Windows\System32\config\SAM",
+            @"C:\Windows\System32\config\SECURITY",
+            @"C:\Windows\System32\config\DEFAULT",
+            @"C:\Users",
+            @"C:\Users\Default",
+            @"C:\Program Files",
+            @"C:\Program Files (x86)",
+            @"C:\Windows\System32\ntoskrnl.exe",
+            @"C:\Windows\System32\winload.exe",
+            @"C:\Windows\System32\hal.dll",
+            @"C:\Windows\System32\lsass.exe",
+            @"C:\Windows\System32\svchost.exe",
+            @"C:\Recovery",
+            @"C:\Windows\System32\Recovery",
+            @"C:\Windows\System32\winre.wim",
+            @"C:\pagefile.sys",
+            @"C:\hiberfil.sys",
         };
 
         private bool IsProtectedFile(string fullPath)
