@@ -95,6 +95,14 @@ namespace FileExplorer
             InitializeComponent();
             InitializeFileExplorer();
             listView1.Dock = DockStyle.Fill;
+
+            this.BackColor = Color.FromArgb(45, 45, 48);
+            this.ForeColor = Color.White;
+            this.BackColor = Color.FromArgb(45, 45, 48);
+
+            listView1.BackColor = Color.FromArgb(30, 30, 30);
+            listView1.ForeColor = Color.White;
+            listView1.HeaderStyle = ColumnHeaderStyle.Nonclickable;
         }
 
         private void InitializeFileExplorer()
@@ -112,6 +120,10 @@ namespace FileExplorer
             listView1.Columns.Add("Name", 250);
             listView1.Columns.Add("Type", 100);
             listView1.Columns.Add("Size", 100);
+
+            listView1.BackColor = Color.FromArgb(30, 30, 30);
+            listView1.ForeColor = Color.White;
+            listView1.HeaderStyle = ColumnHeaderStyle.Nonclickable;
 
             LoadDrives();
         }
@@ -262,6 +274,8 @@ namespace FileExplorer
                     clickedItem.Selected = true;
 
                     contextMenuStrip1 = new ContextMenuStrip();
+                    contextMenuStrip1.BackColor = Color.FromArgb(45, 45, 48);
+                    contextMenuStrip1.ForeColor = Color.White;
 
                     ToolStripMenuItem openMenuItem = new ToolStripMenuItem("Open");
                     ToolStripMenuItem deleteMenuItem = new ToolStripMenuItem("Delete");

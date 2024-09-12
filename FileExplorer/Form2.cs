@@ -18,8 +18,11 @@ namespace FileExplorer
         public TextEditor(string filePath)
         {
             InitializeComponent();
-            this.filePath = filePath;
             LoadFile();
+
+            this.filePath = filePath;
+            this.BackColor = Color.FromArgb(45, 45, 48);
+            this.ForeColor = Color.White;
         }
 
         private void LoadFile()
