@@ -9,18 +9,62 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
+using Microsoft.VisualBasic;
 
 namespace FileExplorer
 {
     public partial class Form1 : Form
     {
         private ImageList imageList = new ImageList();
+        private ContextMenuStrip contextMenuStrip1;
         private string currentDirectory;
+
+        private List<string> protectedFiles = new List<string>
+        {
+            @"C:\Windows",
+            @"C:\test\important.txt",
+            @"C:\System32",
+        };
+
+        private bool IsProtectedFile(string fullPath)
+        {
+            // Check if the file or directory is in the protected list
+            if (protectedFiles.Contains(fullPath, StringComparer.OrdinalIgnoreCase))
+            {
+                return true; // File is protected
+            }
+
+            // Check if the file has read-only, system, or hidden attributes
+            FileAttributes attributes;
+            if (File.Exists(fullPath))
+            {
+                attributes = File.GetAttributes(fullPath);
+            }
+            else if (Directory.Exists(fullPath))
+            {
+                attributes = File.GetAttributes(fullPath);
+            }
+            else
+            {
+                return false; // Path does not exist, so it's not protected
+            }
+
+            if ((attributes & FileAttributes.ReadOnly) == FileAttributes.ReadOnly ||
+                (attributes & FileAttributes.System) == FileAttributes.System ||
+                (attributes & FileAttributes.Hidden) == FileAttributes.Hidden)
+            {
+                return true; // File is protected due to its attributes
+            }
+
+            return false; // File is not protected
+        }
+
 
         public Form1()
         {
             InitializeComponent();
             InitializeFileExplorer();
+            listView1.Dock = DockStyle.Fill;
         }
 
         private void InitializeFileExplorer()
@@ -174,6 +218,123 @@ namespace FileExplorer
                     Process.Start(fullPath);
                 }
                 // Add more conditions for other file types (e.g., .exe)
+            }
+        }
+
+        private void listView1_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                ListViewItem clickedItem = listView1.HitTest(e.Location).Item;
+
+                if (clickedItem != null)
+                {
+                    clickedItem.Selected = true;
+
+                    contextMenuStrip1 = new ContextMenuStrip();
+
+                    ToolStripMenuItem openMenuItem = new ToolStripMenuItem("Open");
+                    ToolStripMenuItem deleteMenuItem = new ToolStripMenuItem("Delete");
+                    ToolStripMenuItem renameMenuItem = new ToolStripMenuItem("Rename");
+
+                    openMenuItem.Click += new EventHandler(OpenMenuItem_Click);
+                    deleteMenuItem.Click += new EventHandler(DeleteMenuItem_Click);
+                    renameMenuItem.Click += new EventHandler(RenameMenuItem_Click);
+
+                    contextMenuStrip1.Items.AddRange(new ToolStripItem[] { openMenuItem, deleteMenuItem, renameMenuItem });
+                    contextMenuStrip1.Show(listView1, e.Location);
+                }
+            }
+        }
+
+        private void OpenMenuItem_Click(object sender, EventArgs e)
+        {
+            if (listView1.SelectedItems.Count == 0) return;
+
+            ListViewItem selectedItem = listView1.SelectedItems[0];
+            string fullPath = selectedItem.Tag.ToString();
+
+            if (File.Exists(fullPath))
+            {
+                string extension = Path.GetExtension(fullPath);
+                if (extension.ToLower() == ".txt")
+                {
+                    OpenTextFile(fullPath);
+                }
+                else if (extension.ToLower() == ".exe")
+                {
+                    Process.Start(fullPath);
+                }
+            }
+            else if (Directory.Exists(fullPath))
+            {
+                LoadDirectories(fullPath);
+            }
+        }
+
+        private void DeleteMenuItem_Click(object sender, EventArgs e)
+        {
+            if (listView1.SelectedItems.Count == 0) return;
+
+            ListViewItem selectedItem = listView1.SelectedItems[0];
+            string fullPath = selectedItem.Tag.ToString();
+
+            if (IsProtectedFile(fullPath))
+            {
+                MessageBox.Show("This file or directory is protected and cannot be deleted.",
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            else if (File.Exists(fullPath) || Directory.Exists(fullPath))
+            {
+                DialogResult result = MessageBox.Show($"Are you sure you want to delete {fullPath}?",
+                    "Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                if (result == DialogResult.Yes)
+                {
+                    if (Directory.Exists(fullPath))
+                        Directory.Delete(fullPath, true); // Delete the directory
+                    else
+                        File.Delete(fullPath); // Delete the file
+
+                    listView1.Items.Remove(selectedItem);
+                }
+            }
+        }
+
+        private void RenameMenuItem_Click(object sender, EventArgs e)
+        {
+            if (listView1.SelectedItems.Count == 0) return;
+
+            ListViewItem selectedItem = listView1.SelectedItems[0];
+            string fullPath = selectedItem.Tag.ToString();
+
+            if (IsProtectedFile(fullPath))
+            {
+                MessageBox.Show("This file or directory is protected and cannot be renamed.",
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            else
+            {
+                // Ask the user for a new name
+                string newName = Microsoft.VisualBasic.Interaction.InputBox("Enter new name:", "Rename", Path.GetFileName(fullPath));
+                if (!string.IsNullOrWhiteSpace(newName))
+                {
+                    string newFullPath = Path.Combine(Path.GetDirectoryName(fullPath), newName);
+
+                    if (File.Exists(fullPath))
+                    {
+                        File.Move(fullPath, newFullPath); // Rename file
+                    }
+                    else if (Directory.Exists(fullPath))
+                    {
+                        Directory.Move(fullPath, newFullPath); // Rename directory
+                    }
+                    // Update name and tag
+                    selectedItem.Text = newName;
+                    selectedItem.Tag = newFullPath;
+                }
             }
         }
     }
