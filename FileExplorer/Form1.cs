@@ -55,6 +55,7 @@ namespace FileExplorer
             @"C:\hiberfil.sys",
         };
 
+        // Better be safe than sorry :D
         private bool IsProtectedFile(string fullPath)
         {
             // Check if the file or directory is in the protected list
