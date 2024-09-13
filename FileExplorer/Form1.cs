@@ -274,8 +274,8 @@ namespace FileExplorer
                     clickedItem.Selected = true;
 
                     contextMenuStrip1 = new ContextMenuStrip();
-                    contextMenuStrip1.BackColor = Color.FromArgb(45, 45, 48);
-                    contextMenuStrip1.ForeColor = Color.White;
+                    contextMenuStrip1.BackColor = Color.White;
+                    contextMenuStrip1.ForeColor = Color.Black;
 
                     ToolStripMenuItem openMenuItem = new ToolStripMenuItem("Open");
                     ToolStripMenuItem deleteMenuItem = new ToolStripMenuItem("Delete");

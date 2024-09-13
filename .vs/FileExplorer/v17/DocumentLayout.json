@@ -3,7 +3,7 @@
   "WorkspaceRootPath": "C:\\Users\\User\\source\\repos\\Leventeae\\Custom-File-Explorer\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{3A220358-02C3-42D3-8149-C41813ED9B8A}|FileExplorer\\FileExplorer.csproj|C:\\Users\\User\\source\\repos\\Leventeae\\Custom-File-Explorer\\fileexplorer\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{3A220358-02C3-42D3-8149-C41813ED9B8A}|FileExplorer\\FileExplorer.csproj|c:\\users\\user\\source\\repos\\leventeae\\custom-file-explorer\\fileexplorer\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3A220358-02C3-42D3-8149-C41813ED9B8A}|FileExplorer\\FileExplorer.csproj|solutionrelative:fileexplorer\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -11,7 +11,7 @@
       "RelativeMoniker": "D:0:0:{3A220358-02C3-42D3-8149-C41813ED9B8A}|FileExplorer\\FileExplorer.csproj|solutionrelative:fileexplorer\\form2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3A220358-02C3-42D3-8149-C41813ED9B8A}|FileExplorer\\FileExplorer.csproj|c:\\users\\user\\source\\repos\\leventeae\\custom-file-explorer\\fileexplorer\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{3A220358-02C3-42D3-8149-C41813ED9B8A}|FileExplorer\\FileExplorer.csproj|C:\\Users\\User\\source\\repos\\Leventeae\\Custom-File-Explorer\\fileexplorer\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{3A220358-02C3-42D3-8149-C41813ED9B8A}|FileExplorer\\FileExplorer.csproj|solutionrelative:fileexplorer\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
@@ -36,7 +36,7 @@
               "RelativeDocumentMoniker": "FileExplorer\\Form1.cs",
               "ToolTip": "C:\\Users\\User\\source\\repos\\Leventeae\\Custom-File-Explorer\\FileExplorer\\Form1.cs",
               "RelativeToolTip": "FileExplorer\\Form1.cs",
-              "ViewState": "AQIAAGAAAAAAAAAAAADwv3wAAAAuAAAA",
+              "ViewState": "AQIAAAEBAAAAAAAAAAAAwBUBAAA9AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-09-12T15:57:37.118Z",
               "IsPinned": true,
@@ -52,8 +52,7 @@
               "RelativeToolTip": "FileExplorer\\Form2.cs",
               "ViewState": "AQIAAAQAAAAAAAAAAAAiwBUAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-12T15:57:39.101Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-12T15:57:39.101Z"
             },
             {
               "$type": "Document",
@@ -64,8 +63,7 @@
               "ToolTip": "C:\\Users\\User\\source\\repos\\Leventeae\\Custom-File-Explorer\\FileExplorer\\Form1.cs [Design]",
               "RelativeToolTip": "FileExplorer\\Form1.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-12T15:57:15.174Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2024-09-12T15:57:15.174Z"
             },
             {
               "$type": "Document",
@@ -76,8 +74,7 @@
               "ToolTip": "C:\\Users\\User\\source\\repos\\Leventeae\\Custom-File-Explorer\\FileExplorer\\Form2.cs [Design]",
               "RelativeToolTip": "FileExplorer\\Form2.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-12T15:57:16.871Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2024-09-12T15:57:16.871Z"
             }
           ]
         }
